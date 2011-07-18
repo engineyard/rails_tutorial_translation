@@ -1185,7 +1185,7 @@ by [Michael Hartl](http://michaelhartl.com/).
 
 <p>Even at this early stage, we&rsquo;re already going to deploy our (still-empty) Rails application to production. This step is optional, but deploying early and often allows us to catch any deployment problems early in our development cycle. The alternative&mdash;deploying only after laborious effort sealed away in a development environment&mdash;often leads to terrible integration headaches when launch time comes.<sup class="footnote" id="fnref:1.25"><a href="#fn:1.25">25</a></sup></p>
 
-<p>Deploying Rails applications used to be a pain, but the Rails deployment ecosystem has matured rapidly in the past few years, and now there are several great options. These include shared hosts or virtual private servers running <a href="http://www.modrails.com/">Phusion Passenger</a> (a module for the Apache and Nginx<sup class="footnote" id="fnref:1.26"><a href="#fn:1.26">26</a></sup> web servers), full-service deployment companies such as <a href="http://engineyard.com/">Engine Yard</a> and <a href="http://railsmachine.com/">Rails Machine</a>, and cloud deployment services such as <a href="http://cloud.engineyard.com">Engine Yard Cloud</a> and <a href="http://heroku.com/">Heroku</a>.</p>
+<p>Deploying Rails applications used to be a pain, but the Rails deployment ecosystem has matured rapidly in the past few years, and now there are several great options. These include shared hosts or virtual private servers running <a href="http://www.modrails.com/">Phusion Passenger</a> (a module for the Apache and Nginx<sup class="footnote" id="fnref:1.26"><a href="#fn:1.26">26</a></sup> web servers), full-service deployment companies such as <a href="http://engineyard.com/">Engine Yard</a> and <a href="http://railsmachine.com/">Rails Machine</a>, and cloud deployment services such as <a href="http://cloud.engineyard.com">Engine Yard AppCloud</a> and <a href="http://heroku.com/">Heroku</a>.</p>
 
 <p>My favorite Rails deployment option is Heroku, which is a hosted platform built specifically for deploying Rails and other Ruby web applications.<sup class="footnote" id="fnref:1.27"><a href="#fn:1.27">27</a></sup> Heroku makes deploying Rails applications ridiculously easy&mdash;as long as your source code is under version control with Git. (This is yet another reason to follow the Git setup steps in <a class="ref" href="beginning#sec:version_control">Section&nbsp;1.3</a> if you haven&rsquo;t already.) The rest of this section is dedicated to deploying our first application to Heroku.</p>
 
@@ -1318,6 +1318,67 @@ jhyicevg.heroku.com</pre>
 
 <p>In addition to supporting subdomains, Heroku also supports custom domains. (In fact, the <a href="http://railstutorial.org">Ruby on Rails Tutorial site</a> lives at Heroku; if you&rsquo;re reading this book online, you&rsquo;re looking at a Heroku-hosted site right now!) See the <a href="http://docs.heroku.com/">Heroku documentation</a> for more information about custom domains and other Heroku topics.</p>
 
+
+<div class="label" id="sec:appcloud_setup"></div>
+
+<h3>
+  <a id="sec:1.4.5" href="beginning#sec:appcloud_setup" class="heading"><span class="number">1.4.5</span> Engine Yard AppCloud setup</a>
+</h3>
+
+<p>
+  Deploying to Engine Yard AppCloud requires a little more work<sup class="footnote" id="fnref:1.29"><a href="#fn:1.29">29</a></sup> than Heroku but gives you a lot of configuration options for your application. They are offering a 500-hour trial on a high CPU, medium size instance for anyone to try AppCloud before purchasing anything.
+</p>
+
+
+<div class="label" id="sec:appcloud_deployment"></div>
+
+<h3>
+  <a id="sec:1.4.6" href="beginning#sec:appcloud_deployment" class="heading"><span class="number">1.4.6</span> Engine Yard AppCloud deployment</a>
+</h3>
+
+<p>
+  After you <a href='https://cloud.engineyard.com/signup'>sign up for an AppCloud account</a>, login to AppCloud and <a href='http://docs.engineyard.com/application_home.html'>create a new application</a>
+</p>
+
+<div class="label" id="fig:appcloud_new_app"></div>
+
+
+<div class="figure"><div class="center"><span class="graphic"><img src="/images/figures/appcloud_new_app.jpg" alt="appcloud_new_app" /></span></div><div class="caption"><span class="header">Figure 1.13: </span><span class="description">Creating an application on AppCloud.&nbsp;<a href="http://railstutorial.org/images/figures/appcloud_new_app.jpg">(full size)</a></span></div></div>
+
+<p>
+  AppCloud let's you have multiple environments (development, staging, production, custom) for per application. Once your application has been created, set up a new environment for your application.
+</p>
+
+<div class="label" id="fig:appcloud_new_env"></div>
+
+
+<div class="figure"><div class="center"><span class="graphic"><img src="/images/figures/appcloud_new_env.jpg" alt="appcloud_new_env" /></span></div><div class="caption"><span class="header">Figure 1.14: </span><span class="description">Creating a new environment on AppCloud.&nbsp;<a href="http://railstutorial.org/images/figures/appcloud_new_env.jpg">(full size)</a></span></div></div>
+
+<div class="label" id="sec:appcloud_cli"></div>
+
+<h3>
+  <a id="sec:1.4.7" href="beginning#sec:appcloud_cli" class="heading"><span class="number">1.4.7</span> Engine Yard AppCloud Command Line</a>
+</h3>
+
+<p>
+  With Engine Yard AppCloud, you can do all of your configuration and deployment from the web interface. You can also deploy from the command line if you have already created an application and an environment. The first thing you need to do is install the <code>engineyard</code> gem.
+</p>
+
+<div class="code">
+  <div class="highlight">
+    <pre><span class="gp">$</span> <span class="o">[</span>sudo<span class="o">]</span> gem install engineyard</pre>
+  </div>
+</div>
+
+<p>To deploy the application to AppCloud use the <code>ey deploy</code> command. You will be prompted for your login (email address) and password the first time.</p> You can view all of the deployment options by using the <code>--help</code> option.
+
+<div class="code">
+  <div class="highlight">
+    <pre><span class="gp">$</span> ey --help</pre>
+  </div>
+</div>
+
+
 <div class="label" id="sec:beginning_conclusion"></div>
 
 
@@ -1366,6 +1427,7 @@ jhyicevg.heroku.com</pre>
 <li id="fn:1.26">Pronounced &ldquo;Engine X&rdquo;.&nbsp;<a class="arrow" href="#fnref:1.26">&uarr;</a></li>
 <li id="fn:1.27">Heroku works with any Ruby web platform that uses <a href="http://rack.rubyforge.org/">Rack middleware</a>, which provides a standard interface between web frameworks and web servers. Adoption of the Rack interface has been extraordinarily strong in the Ruby community, including frameworks as varied as <a href="http://www.sinatrarb.com/">Sinatra</a>, <a href="http://ramaze.net/">Ramaze</a>, <a href="http://camping.rubyforge.org/files/README.html">Camping</a>, and Rails, which means that Heroku basically supports any Ruby web app.&nbsp;<a class="arrow" href="#fnref:1.27">&uarr;</a></li>
 <li id="fn:1.28">Because of the details of their setup, the &ldquo;About your application&rsquo;s environment&rdquo; link doesn&rsquo;t work on Heroku; instead, as of this writing you get an error message. Don&rsquo;t worry; this is normal. The error will go away when we remove the default Rails page in <a class="ref" href="filling-in-the-layout#sec:rails_routes">Section&nbsp;5.2.2</a>.&nbsp;<a class="arrow" href="#fnref:1.28">&uarr;</a></li>
+<li id="fn:1.29">The default database for AppCloud is MySQL so you will need to add the <code>mysql</code> (for Ruby 1.8.7) or <code>mysql2</code> (for Ruby 1.9.2) gem to your Gemfile. You can also request beta access to be able to use PostgreSQL in which case you would need the <code>pg</code> gem. Whichever gem you choose should be added to a 'production' group: <code>gem 'mysql2', '~> 0.2.7', :group => :production</code>.&nbsp;<a class="arrow" href="#fnref:1.29">&uarr;</a></li>
 </ol>
 </div>
 
