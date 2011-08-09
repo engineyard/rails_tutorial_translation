@@ -778,7 +778,19 @@ by [Michael Hartl](http://michaelhartl.com/).
 <div class="label" id="fig:create_repository"></div>
 
 
-<div class="figure"><div class="center"><span class="graphic"><img src="/images/figures/create_repository.png" alt="create_repository" /></span></div><div class="caption"><span class="header">Figure 3.1: </span><span class="description">Creating the sample app repository at GitHub.&nbsp;<a href="http://railstutorial.org/images/figures/create_repository-full.png">(full size)</a></span></div></div>
+<div class="figure">
+  <div class="center">
+    <span class="graphic">
+      <img src="/images/figures/create_repository.png" alt="create_repository" />
+    </span>
+  </div>
+  <div class="caption">
+    <span class="header">Figure 3.1: </span>
+    <span class="description">Creating the sample app repository at GitHub.&nbsp;
+      <a href="http://railstutorial.org/images/figures/create_repository-full.png">(full size)</a>
+    </span>
+  </div>
+</div>
 
 
 <p>Since we&rsquo;ll be using this sample app throughout the rest of the book, it&rsquo;s a good idea to make a repository at GitHub (<a class="ref" href="static-pages#fig:create_repository">Figure&nbsp;3.1</a>) and push it up:</p>
@@ -791,21 +803,38 @@ by [Michael Hartl](http://michaelhartl.com/).
 
 <p>(Note that, as a result of this step, the repository at <a href="http://github.com/railstutorial/sample_app">http://github.com/railstutorial/sample_app</a> has the source code for the full sample application. You are welcome to consult it for reference, with two caveats: (1) You will learn a lot more if you type in the source code samples yourself, rather than relying on the completed version; (2) There may be minor differences between the GitHub repository and the code in the book. This is due both to the incorporation of some of the book&rsquo;s exercises and to the repository&rsquo;s use in the <a href="http://railstutorial.org/screencasts">Rails Tutorial screencasts</a>, which includes a few more tests.)</p>
 
-<p>Of course, we can optionally deploy the app to Heroku even at this early stage:</p>
+<p>Of course, we can optionally deploy the app to AppCloud even at this early stage:</p>
 
-<div class="code"><div class="highlight"><pre><span class="gp">$</span> heroku create
-<span class="gp">$</span> git push heroku master
-</pre></div>
+<div class="label" id="fig:appcloud_new_sample_app"></div>
+
+<div class="figure">
+  <div class="center">
+    <span class="graphic">
+      <img src="/images/figures/appcloud_new_sample_app.jpg" alt="appcloud_new_sample_app" />   </span>
+  </div>
+  <div class="caption">
+    <span class="header">Figure 2.17: </span>
+    <span class="description">Creating an application on AppCloud.&nbsp;
+      <a href="http://railstutorial.org/images/figures/appcloud_new_sample_app.jpg">(full size)</a>
+    </span>
+  </div>
 </div>
 
+<div class="label" id="fig:appcloud_new_sample_env"></div>
 
-<p>(If this doesn&rsquo;t work for you, see the note just above <a class="ref" href="beginning#code:gemfile_sqlite_heroku">Listing&nbsp;1.9</a> for a possible fix.) As you proceed through the rest of the book, I recommend pushing and deploying the application regularly:</p>
-
-<div class="code"><div class="highlight"><pre><span class="gp">$</span> git push
-<span class="gp">$</span> git push heroku
-</pre></div>
+<div class="figure">
+  <div class="center">
+    <span class="graphic">
+      <img src="/images/figures/appcloud_new_sample_env.jpg" alt="appcloud_new_sample_env" />
+    </span>
+  </div>
+  <div class="caption">
+    <span class="header">Figure 2.18: </span>
+    <span class="description">Creating a new environment on AppCloud.&nbsp;
+      <a href="http://railstutorial.org/images/figures/appcloud_new_sample_env.jpg">(full size)</a>
+    </span>
+  </div>
 </div>
-
 
 <p>With that, we&rsquo;re ready to get started developing the sample application.</p>
 
@@ -2279,10 +2308,10 @@ by [Michael Hartl](http://michaelhartl.com/).
 </div>
 
 
-<p>If you like, at this point you can even deploy the updated application to Heroku:</p>
+<p>If you like, at this point you can even deploy the updated application to AppCloud:</p>
 
 <div class="code"><div class="highlight"><pre><span class="gp">$</span> bundle <span class="nb">exec </span>rspec spec/
-<span class="gp">$</span> git push heroku
+<span class="gp">$</span> ey deploy -a sample_app -e sample_app_production
 </pre></div>
 </div>
 
