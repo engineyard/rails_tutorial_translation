@@ -328,7 +328,7 @@
       <li>
         <ol>
           <li class="subsection"><a href="modeling-and-viewing-users-two#sec:7.4.1"><span class="number">7.4.1</span> Git commit</a></li>
-          <li class="subsection"><a href="modeling-and-viewing-users-two#sec:heroku_deploy"><span class="number">7.4.2</span> Heroku deploy</a></li>
+          <li class="subsection"><a href="modeling-and-viewing-users-two#sec:appcloud_deploy"><span class="number">7.4.2</span> AppCloud deploy</a></li>
         </ol>
       </li>
       <li class="section"><a href="modeling-and-viewing-users-two#sec:more_modeling_users_exercises"><span class="number">7.5</span> Exercises</a></li>
@@ -2224,29 +2224,46 @@ For the moment, we&rsquo;ll use this directly in our user show view, as seen in 
 </div>
 
 
-<div class="label" id="sec:heroku_deploy"></div>
+<div class="label" id="sec:appcloud_deploy"></div>
 
 
-<h3><a id="sec:7.4.2" href="modeling-and-viewing-users-two#sec:heroku_deploy" class="heading"><span class="number">7.4.2</span> Heroku deploy</a></h3>
+<h3><a id="sec:7.4.2" href="modeling-and-viewing-users-two#sec:appcloud_deploy" class="heading"><span class="number">7.4.2</span> AppCloud deploy</a></h3>
 
 
-<p>If you&rsquo;ve deployed your sample application to Heroku, you can push it up at this point:</p>
+<p>If you&rsquo;ve deployed your sample application to AppCloud, you can re-deploy and migrate at this point:</p>
 
-<div class="code"><div class="highlight"><pre><span class="gp">$</span> git push heroku
+<div class="code"><div class="highlight"><pre><span class="gp">$</span> ey deploy -m
 </pre></div>
 </div>
 
+<p>
+  The <code>-m</code> flag runs migrations using the default command 
+  <code>rake db:migrate --trace</code>. You can pass in a different command like
+  so:
+</p>
 
-<p>Then migrate the database on the remote server using the <code>heroku</code> command:</p>
-
-<div class="code"><div class="highlight"><pre><span class="gp">$</span> heroku rake db:migrate
-</pre></div>
+<div class='code'>
+  <div class='highlight'><pre><span class='gp'>$</span> ey deploy -m "rake db:migrate"</pre></div>
 </div>
 
 
-<p>Now if you want to create a sample user on Heroku, you can use the Heroku console:</p>
+<p>
+  Now if you want to create a sample user on AppCloud, you can SSH into your
+  instance using:
+</p>
 
-<div class="code"><div class="highlight"><pre><span class="go">$ heroku console</span>
+<div class='code'>
+  <div class='highlight'><pre><span class='gp'>$</span> ey ssh -e sample_app_production</pre></div>
+</div>
+
+<p>
+  Then change directories to the root of your application and start the console:
+</p>
+
+<div class="code">
+  <div class="highlight">
+    <pre><span class='gp'>$</span> cd /data/sample_app/current</pre>
+    <pre><span class="go">$ bundle exec rails console -e production</span>
 <span class="gp">&gt;&gt; </span><span class="no">User</span><span class="o">.</span><span class="n">create!</span><span class="p">(</span><span class="ss">:name</span> <span class="o">=&gt;</span> <span class="s2">&quot;Example User&quot;</span><span class="p">,</span> <span class="ss">:email</span> <span class="o">=&gt;</span> <span class="s2">&quot;user@example.com&quot;</span><span class="p">,</span>
 <span class="gp">?&gt; </span>             <span class="ss">:password</span> <span class="o">=&gt;</span> <span class="s2">&quot;foobar&quot;</span><span class="p">,</span> <span class="ss">:password_confirmation</span> <span class="o">=&gt;</span> <span class="s2">&quot;foobar&quot;</span><span class="p">)</span>
 </pre></div>
