@@ -2588,10 +2588,9 @@
 </div>
 
 
-<p>You can also push the app up to Heroku at this point. Because the data model has changed through the addition of the <code>microposts</code> table, you will also need to migrate the production database:</p>
+<p>You can also push the app up to AppCloud at this point. Because the data model has changed through the addition of the <code>microposts</code> table, you will also need to migrate the production database:</p>
 
-<div class="code"><div class="highlight"><pre><span class="gp">$</span> git push heroku
-<span class="gp">$</span> heroku rake db:migrate
+<div class="code"><div class="highlight"><pre><span class="gp">$</span> ey deploy -m rake db:migrate
 </pre></div>
 </div>
 
