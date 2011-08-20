@@ -2934,8 +2934,7 @@ These stats consist of a count of the number of users the current user is follow
 <span class="gp">$</span> git commit -m <span class="s2">&quot;Added user following&quot;</span>
 <span class="gp">$</span> git checkout master
 <span class="gp">$</span> git merge following-users
-<span class="gp">$</span> git push heroku
-<span class="gp">$</span> heroku rake db:migrate
+<span class="gp">$</span> ey deploy -m rake db:migrate
 </pre></div>
 </div>
 
@@ -3020,7 +3019,7 @@ These stats consist of a count of the number of users the current user is follow
 <h4><a id="sec:12.4.1.8" href="following-users#sec:search" class="heading">Search</a></h4>
 
 
-<p>Currently, there is no way for users to find each other than paging through the user index or viewing the feeds of other users. Implement a search feature to remedy this. Then add another search feature for microposts. The <a href="http://railscasts.com/episodes/37-simple-search-form">Railscast on simple search forms</a> will help get you started. If you deploy using a shared host or a dedicated server, I suggest using <a href="http://freelancing-god.github.com/ts/en/">Thinking Sphinx</a> (following the <a href="http://railscasts.com/episodes/120-thinking-sphinx">Railscast on Thinking Sphinx</a>). If you deploy on Heroku, you should follow the <a href="http://docs.heroku.com/full-text-search">Heroku full text search</a> instructions.</p>
+<p>Currently, there is no way for users to find each other than paging through the user index or viewing the feeds of other users. Implement a search feature to remedy this. Then add another search feature for microposts. The <a href="http://railscasts.com/episodes/37-simple-search-form">Railscast on simple search forms</a> will help get you started. If you deploy using a shared host or a dedicated server, I suggest using <a href="http://freelancing-god.github.com/ts/en/">Thinking Sphinx</a> (following the <a href="http://railscasts.com/episodes/120-thinking-sphinx">Railscast on Thinking Sphinx</a>). If you deploy on AppCloud, you should follow the <a href="http://docs.engineyard.com/full-text-search-with-thinking-sphinx.html">AppCloud full text search</a> instructions.</p>
 
 <div class="label" id="sec:guide_to_further_resources"></div>
 
